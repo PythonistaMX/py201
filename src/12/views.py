@@ -7,11 +7,11 @@ def index(request):
 
 
 def error(request):
-    return HttpResponseServerError('¡Ups!')
+    return HttpResponseServerError('<h1>¡Ups!</h1>')
 
 
 def otro_error(request):
-    return HttpResponseServerError(None)
+    return HttpResponseServerError()
 
 @csrf_exempt
 def contenido(request):
