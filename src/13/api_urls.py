@@ -1,4 +1,5 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [path('carga', views.carga),]
+urlpatterns = [path('', views.vista),
+    path('carga', views.carga),]
