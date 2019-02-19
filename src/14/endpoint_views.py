@@ -2,14 +2,18 @@ from . import models
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponseNotFound, HttpResponseBadRequest
 
+# campos define la estructura de los datos que va transmitir el servidor, incluyendo el tipo de dato y si es obligatorio.
 campos = {'numero_de_cuenta':(int, True), 'nombre':(str, True), 'primer_apellido':(str, True),
           'segundo_apellido':(str, False), 'carrera':(str, True), 'semestre':(int, True),
           'promedio':(float, True), 'al_corriente':(bool, True)}
 
+# carreras define la carrera que puede tener un alumno.
 carreras = ('Sistemas', 'Derecho', 'Actuaría', 'Arquitectura', 'Administración')
 
+# estructura base ci=ontiene un conjunto de los identificadores de campos. 
 estructura_base = set(campos)
 
+# Reglas de negocio.
 
 def reglas(valor, campo):
     if campo == "carrera" and valor not in carreras:
@@ -23,7 +27,7 @@ def reglas(valor, campo):
     else:
         return True         
 
-    
+# Valida que el dato sea del tipo del campo correspondiente y en caso de quen así sea, llama a reglas(). 
 def valida(dato, campo):
     tipo = campos[campo][0]
     try:
@@ -57,7 +61,7 @@ def clave(request, clave):
         
     # Cuando la petición es DELETE el alumno es eliminado de la base de datos.
     if request.method == "DELETE":
-        # Esta operación se realiza en caso de que exista un objeto con el número de cuenta
+        # Esta operación se realiza en caso de que exista un objeto con el número de cuenta.
         try:
             alumno = models.Alumno.objects.get(numero_de_cuenta=clave)
             alumno.delete()
