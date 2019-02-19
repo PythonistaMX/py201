@@ -27,11 +27,13 @@ def reglas(valor, campo):
 def valida(dato, campo):
     tipo = campos[campo][0]
     try:
-        if tipo is not str:
-            valor = eval(dato)
-        else:
+        if tipo is str:
             valor = dato
-        if type(valor) is tipo or (tipo is float and type(dato) is int):
+        elif tipo is float:
+            valor = float(dato)
+        else:
+            valor = eval(dato)
+        if type(valor) is tipo:
             return reglas(valor, campo)
         else:
             return False
@@ -44,8 +46,8 @@ def clave(request, clave):
     '''Función de vista que define un endpoint correspondiente a una clave de 4 dígitos.
     Opera con los métodos GET, POST, DELETE.'''
     # Cuando la petición es GET va a obtener los datos del alumno con la clave correrspondiente.
-    # Esta operación se realiza en caso de que exista un objeto con el número de cuenta.
     if request.method == "GET":
+        # Esta operación se realiza en caso de que exista un objeto con el número de cuenta.
         try:
             alumno = models.Alumno.objects.get(numero_de_cuenta=clave) 
             return JsonResponse({campo:getattr(alumno, campo) for campo in campos})
@@ -54,8 +56,8 @@ def clave(request, clave):
             return HttpResponseNotFound()
         
     # Cuando la petición es DELETE el alumno es eliminado de la base de datos.
-    # Esta operación se realiza en caso de que exista un objeto con el número de cuenta.
     if request.method == "DELETE":
+        # Esta operación se realiza en caso de que exista un objeto con el número de cuenta
         try:
             alumno = models.Alumno.objects.get(numero_de_cuenta=clave)
             alumno.delete()
@@ -63,8 +65,9 @@ def clave(request, clave):
         except models.Alumno.DoesNotExist:
             return HttpResponseNotFound()
     # Cuando la petición es POST va a dar de alta los datos del alumno con la clave correspondiente y los datos enviados.
-    # Esta operación se realiza en caso de que no exista un objeto con el número de cuenta.
+    
     if request.method == "POST":
+        # Esta operación se realiza en caso de que no exista un objeto con el número de cuenta.
         try:
             alumno = models.Alumno.objects.get(numero_de_cuenta=clave) 
             return HttpResponseBadRequest()
@@ -75,9 +78,15 @@ def clave(request, clave):
             estructura_registro = set(registro)
             if estructura_registro.issubset(estructura_base):
                 for campo in estructura_base:
+                    if campo not in estructura_registro:
+                        if campos[campo][1]:
+                            return HttpResponseBadRequest()
+                        else:
+                            registro[campo] = ''
+                    tipo = campos[campo][0]
                     if valida(registro[campo], campo):
-                        if campos[campo][0] is not str:
-                            valor = eval(registro[campo])
+                        if tipo is not str:
+                            valor = (eval(registro[campo]))
                         else:
                             valor = registro[campo]
                         setattr(objeto, campo, valor)
