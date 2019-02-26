@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block encabezado %}Listado de alumnos{% endblock %}
+{% block cuerpo %}
+    <h1> Listado de alumnos</h1>.
+    {% for registro in lista %}
+        <p/>
+        <ul>
+            {% for campo, dato in registro%}
+                <li>{{ campo }}: {{ dato }} </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}

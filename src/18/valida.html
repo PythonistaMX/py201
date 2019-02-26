@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block encabezado %}Alumnos validados{% endblock %}
+{% block cuerpo %}
+    <h1> Listado de alumnos validados.</h1>
+    {% for registro in lista %}
+        <p/>
+        <ul>
+            {% for dato in registro %}
+                <li>
+                    {%cycle 'Número de cuenta' 'Nombre' 'Primer apellido' 'Segundo apellido' 'Carrera' 'Semestre' 'Promedio' 'Al corriente' as encabezado %}: 
+                    {% if encabezado == "Al corriente" %}
+                        {% if dato %}
+                            Alumno válido.
+                        {% else %}
+                            <b> Alumno inválido.</b>
+                        {% endif %}
+                    {% else %}
+                        {{ dato }}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+{% endblock %}
