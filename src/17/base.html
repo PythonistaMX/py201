@@ -2,15 +2,11 @@
 <html>
     <header>
         <meta charset="UTF-8">
-        <title>
-            {% block encabezado %}
-                {{ titulo }}
-            {% endblock %}
-        </title>
+        <title>{{ titulo }}</title>
     </header>
     <body>
         {% block cuerpo %}
-        <h1>¡Hola, {{nombre}}!</h1>
-        {% endblock %}
+        <h1>¡Hola, mundo!</h1>
+        {% endblock %)
     </body>
-</html>  
+</html>
