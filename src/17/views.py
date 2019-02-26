@@ -1,5 +1,6 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseServerError
 from django.shortcuts import render_to_response
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
@@ -19,8 +20,17 @@ def numero(request, numero):
 
 
 def saluda(request, nombre):
-    return render_to_response('base.html', {"titulo":"Prueba de plantilla", "nombre": nombre})
+    return render_to_response('ejemplo.html', {"titulo":"Prueba de plantilla", "nombre": nombre})
 
+def error(request):
+    return HttpResponseServerError('<h1>¡Ups!</h1>')
+
+def otro_error(request):
+    return HttpResponseServerError()
+
+@csrf_exempt
+def contenido(request):
+    return JsonResponse(request.POST.dict())
 
 def respuesta_json(request):
     
