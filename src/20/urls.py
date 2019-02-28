@@ -6,5 +6,5 @@ urlpatterns = [path('', views.vista),
                re_path(r'^(?P<clave>[0-9]{4}$)', endpoint_views.clave),
                path('vista/', template_views.vista),
                path('valida/', template_views.valida),
-               path('forma', template_views.forma),
+               path('alta/', template_views.forma),
          ]

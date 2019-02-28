@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block encabezado %}Forma de alta {% endblock %}
+{% block cuerpo %}
+    <form action="/api/alta/" method="post">
+        <div class="form-group">
+            {% csrf_token %}
+            {{ forma }}
+        </div>
+        <input type="submit" value="Enviar">
+    </form>
+{% endblock %}

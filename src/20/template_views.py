@@ -1,7 +1,8 @@
 from .models import Alumno
-from .forms import FromaAlumno
-from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from .forms import FormaAlumno
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from django.shortcuts import render, render_to_response
+from requests import post
 
 campos = ('numero_de_cuenta', 'nombre', 'primer_apellido', 'segundo_apellido', 'carrera', 'semestre', 'promedio', 'al_corriente')
 
@@ -16,18 +17,21 @@ def valida(request):
     return render_to_response('valida.html',{'lista': lista}) 
 
 def forma(request):
-   # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
         forma = FormaAlumno(request.POST)
-        # check whether it's valid:
         if forma.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
+            datos = request.POST.dict()
+            datos.pop('csrfmiddlewaretoken')
+            cuenta = datos.pop('numero_de_cuenta')
+            if 'al_corriente' in datos:
+                datos['al_corriente']=True
+            else:
+                datos['al_corriente']=False
+            resultado = post('http://' + request.get_host() + '/api/{}'.format(cuenta), data=datos)
+            if resultado.status_code == 200:
+                return HttpResponse('<h1>¡Alta Exitosa!</h1>')    
+            else: 
+                return HttpResponse('<h1>Ocurrió un error en el alta.</h1>')  
     else:
         forma = FormaAlumno()
 
