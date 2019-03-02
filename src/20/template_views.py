@@ -31,7 +31,9 @@ def forma(request):
             if resultado.status_code == 200:
                 return HttpResponse('<h1>¡Alta Exitosa!</h1>')    
             else: 
-                return HttpResponse('<h1>Ocurrió un error en el alta.</h1>')  
+                return HttpResponse('<h1>Ocurrió un error en el alta.</h1>')
+
+            
     else:
         forma = FormaAlumno()
 
