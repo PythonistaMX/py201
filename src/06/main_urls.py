@@ -1,4 +1,5 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [path('', views.index, name="inicio"), path('calif', views.calificaciones)]
+urlpatterns = [path('', views.index, name="inicio"), 
+               path('vista', views.vista)]
