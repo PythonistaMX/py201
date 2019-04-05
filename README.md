@@ -35,5 +35,12 @@ Los apuntes son notebooks de [Jupyter](https://jupyter.org/) con código ejecuta
 
 Para poder aprovechar por completo el código de los apuntes, se recomienda descargar y ejecutar desde VirtualBox la imagen que se encuentra disponible en https://pythonista.io/descargas/base/view.
 
+## Descarga de los apuntes.
+
+Para descargar los apuntes ejecute el siguiente comando:
+```
+git clone https://github.com/PythonistaMX/py231.git
+```
+
 <p style="text-align: center"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.</p>
 <p style="text-align: center">&copy; José Luis Chiquete Valdivieso. 2019.</p>
