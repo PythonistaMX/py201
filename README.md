@@ -23,7 +23,7 @@
 * Plantillas de Django.
 * El lengiaje de plantillas de Django.
 * Contenido estático.
-* Fromas en Django.
+* Formas en Django.
 * Seguridad y autenticación básica.
 * Panel de administración.
 * Despliegue de un proyecto.
