@@ -17,8 +17,8 @@
 * Configuración de bases de datos.
 * Introducción a modelos.
 * Operaciones básicas con modelos.
-* Servidor APi REST básico.
-* Cliente APi REST.
+* Servidor API REST básico.
+* Cliente API REST.
 * Modelos y el shell de Django.
 * Plantillas de Django.
 * El lengiaje de plantillas de Django.
