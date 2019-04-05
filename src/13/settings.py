@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'api',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +74,9 @@ WSGI_APPLICATION = 'tutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {'default': {'ENGINE': 'mysql.connector.django',
+DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3',
+             'NAME': '/opt/pythonista/py231/tutorial/db.sqlite3'},
+             'pythonista': {'ENGINE': 'mysql.connector.django',
                 'NAME': 'db_django',
                 'USER': 'root',
                 'PASSWORD': '0p3n5t4ck',

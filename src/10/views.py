@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseServerError, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
@@ -19,3 +20,20 @@ def numero(request, numero):
 
 def saluda(request, nombre):
     return HttpResponse('<h1>¡Hola, {}!</h1>'.format(nombre))
+
+
+def respuesta_json(request):
+    
+    return JsonResponse({'tipo contenido':request.content_type, 'metodo':request.method, 'ruta':request.path})
+
+
+def error(request):
+    return HttpResponseServerError('<h1>¡Ups!</h1>')
+
+
+def otro_error(request):
+    return HttpResponseServerError()
+
+@csrf_exempt
+def contenido(request):
+    return JsonResponse(request.POST.dict())
