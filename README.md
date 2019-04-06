@@ -33,7 +33,7 @@
 
 Los apuntes son notebooks de [Jupyter](https://jupyter.org/) con código ejecutable y están diseñados para acceder a una base de datos MySQL configuración específica. 
 
-Para poder aprovechar por completo el código de los apuntes, se recomienda descargar y ejecutar desde VirtualBox la imagen que se encuentra disponible en https://pythonista.io/descargas/base/view.
+Para poder aprovechar por completo el código de los apuntes, se recomienda descargar y ejecutar desde [VirtualBox](https://www.virtualbox.org/) la imagen que se encuentra disponible en https://pythonista.io/descargas/base/view.
 
 ## Descarga de los apuntes.
 
