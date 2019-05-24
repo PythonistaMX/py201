@@ -6,8 +6,8 @@ def index(request):
     return HttpResponse("<h1>Hola, mundo.</h1>")
 
 
-def calificaciones(request):
-    return HttpResponse(request.method)
+def vista(request):
+    return HttpResponse('<ul><li>URL: {}</li><li>Método: {}</li><li>Codificación: {}</li><li>Argumentos: {}</li></ul>'.format(request.path, request.method, request.encoding, request.GET.dict()))
 
 
 def clave(request, clave):
@@ -23,16 +23,12 @@ def saluda(request, nombre):
 
 
 def respuesta_json(request):
-    
     return JsonResponse({'tipo contenido':request.content_type, 'metodo':request.method, 'ruta':request.path})
 
 
 def error(request):
     return HttpResponseServerError('<h1>¡Ups!</h1>')
 
-
-def otro_error(request):
-    return HttpResponseServerError()
 
 @csrf_exempt
 def contenido(request):
