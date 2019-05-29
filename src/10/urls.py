@@ -8,4 +8,6 @@ urlpatterns = [path('', views.index, name="inicio"),
                path('claves/<int:numero>', views.numero),
                path('claves/<str:nombre>', views.saluda),
                path('json', views.respuesta_json),
-               path('contenido', views.contenido),]
+               path('contenido', views.contenido),
+               path('error', views.error),
+               path('listas', views.listas)]

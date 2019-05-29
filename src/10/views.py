@@ -33,3 +33,7 @@ def error(request):
 @csrf_exempt
 def contenido(request):
     return JsonResponse(request.POST.dict())
+
+
+def listas (request):
+    return HttpResponse(request.GET.lists())
