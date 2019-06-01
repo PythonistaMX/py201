@@ -1,14 +1,14 @@
-from django.http import HttpResponse, JsonResponse, HttpResponseServerError
-from django.shortcuts import render_to_response
+from django.http import HttpResponse, HttpResponseServerError, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render_to_response
 
 
 def index(request):
     return HttpResponse("<h1>Hola, mundo.</h1>")
 
 
-def calificaciones(request):
-    return HttpResponse(request.method)
+def vista(request):
+    return HttpResponse('<ul><li>URL: {}</li><li>Método: {}</li><li>Codificación: {}</li><li>Argumentos: {}</li></ul>'.format(request.path, request.method, request.encoding, request.GET.dict()))
 
 
 def clave(request, clave):
@@ -19,19 +19,21 @@ def numero(request, numero):
     return HttpResponse('<h1>Introdujiste el número: {}</h1>'.format(str(numero)))
 
 
-def saluda(request, nombre):
-    return render_to_response('ejemplo.html', {"titulo":"Prueba de plantilla", "nombre": nombre})
+def respuesta_json(request):
+    return JsonResponse({'tipo contenido':request.content_type, 'metodo':request.method, 'ruta':request.path})
+
 
 def error(request):
     return HttpResponseServerError('<h1>¡Ups!</h1>')
 
-def otro_error(request):
-    return HttpResponseServerError()
 
 @csrf_exempt
 def contenido(request):
     return JsonResponse(request.POST.dict())
 
-def respuesta_json(request):
-    
-    return JsonResponse({'tipo contenido':request.content_type, 'metodo':request.method, 'ruta':request.path})
+
+def listas (request):
+    return HttpResponse(request.GET.lists())
+
+def saluda(request, nombre):
+    return render_to_response('ejemplo.html', {'titulo':"Prueba de plantilla", 'nombre': nombre})
