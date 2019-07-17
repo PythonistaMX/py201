@@ -1,6 +1,6 @@
 [![imagenes](imagenes/pythonista.png)](https://pythonista.mx)
 
-# py231 Introducción a Django.
+# py201 Introducción a Django.
 
 ## Temario:
 
@@ -39,7 +39,7 @@ Para poder aprovechar por completo el código de los apuntes, se recomienda desc
 
 Para descargar los apuntes ejecute el siguiente comando:
 ```
-git clone https://github.com/PythonistaMX/py231.git
+git clone https://github.com/PythonistaMX/py201.git
 ```
 
 <p style="text-align: center"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>.</p>
