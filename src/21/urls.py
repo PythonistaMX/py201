@@ -1,10 +1,8 @@
-from django.urls import path, re_path
-from . import views, endpoint_views, template_views
+from django.contrib import admin
+from django.urls import include, path
 
-urlpatterns = [path('', views.vista),
-               path('carga', views.carga),
-               re_path(r'^(?P<clave>[0-9]{4}$)', endpoint_views.clave),
-               path('vista/', template_views.vista),
-               path('valida/', template_views.valida),
-               path('alta/', template_views.forma),
-         ]
+urlpatterns = [path('admin/', admin.site.urls), 
+               path('main/', include('main.urls')),
+               path('api/', include('api.urls')),
+               path('accounts/', include('django.contrib.auth.urls')),
+              ]
