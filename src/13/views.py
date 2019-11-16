@@ -9,7 +9,7 @@ campos = {'numero_de_cuenta':int, 'nombre':str, 'primer_apellido':str,
 def carga(request):
     '''Función encargada de crear objetos instaciados de models.Alumno y de poblar la base de datos.'''
     # Carga los datos de un archivo JSON
-    with open('alumnos.json', 'tr') as archivo:
+    with open('alumnos.json', 'tr', encoding="utf-8") as archivo:
         alumnos = json.load(archivo)
     #Crea un objeto a partir de cada elemento tipo dict de alumnos
     for registro in alumnos:
