@@ -96,7 +96,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC-6'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -108,7 +108,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-LOGIN_REDIRECT_URL = '/api/'
+LOGIN_REDIRECT_URL = '/django/api/'
+LOGIN_URL = '/django/accounts/login'
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 STATICFILES_FINDERS = ['django.contrib.staticfiles.finders.FileSystemFinder',
