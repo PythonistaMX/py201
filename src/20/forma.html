@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block encabezado %}Forma de alta {% endblock %}
 {% block cuerpo %}
+    <style>
+        form {margin: 20px}
+        label {display: block};        }
+        
+    </style>
     <form action="/api/alta/" method="post">
         <div class="form-group">
             {% csrf_token %}
