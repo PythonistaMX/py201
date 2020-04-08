@@ -1,7 +1,6 @@
 from django.http import HttpResponse, HttpResponseServerError, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render_to_response
-
+from django.shortcuts import render
 
 def index(request):
     return HttpResponse("<h1>Hola, mundo.</h1>")
@@ -33,7 +32,4 @@ def contenido(request):
 
 
 def listas (request):
-    return HttpResponse(request.GET.lists())
-
-def saluda(request, nombre):
-    return render_to_response('ejemplo.html', {'titulo':"Prueba de plantilla", 'nombre': nombre})
+    return HttpResponse

@@ -1,7 +1,7 @@
 from .models import Alumno
 from .forms import FormaAlumno
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from requests import post
 
 campos = ('numero_de_cuenta', 'nombre', 'primer_apellido', 'segundo_apellido', 'carrera', 'semestre', 'promedio', 'al_corriente')
@@ -9,12 +9,12 @@ campos = ('numero_de_cuenta', 'nombre', 'primer_apellido', 'segundo_apellido', '
 
 def vista(request):
     lista = [[(campo, getattr(alumno, campo)) for campo in campos] for alumno in Alumno.objects.all()]
-    return render_to_response('listado.html',{'lista': lista}) 
+    return render(request, 'listado.html', {'lista': lista}) 
 
 
 def valida(request):
     lista = [[getattr(alumno, campo) for campo in campos] for alumno in Alumno.objects.all()]
-    return render_to_response('valida.html',{'lista': lista}) 
+    return render(request, 'valida.html', {'lista': lista}) 
 
 def forma(request):
     if request.method == 'POST':
@@ -32,9 +32,6 @@ def forma(request):
                 return HttpResponse('<h1>¡Alta Exitosa!</h1>')    
             else: 
                 return HttpResponse('<h1>Ocurrió un error en el alta.</h1>')
-
-            
     else:
         forma = FormaAlumno()
-
-    return render(request, 'forma.html', {'forma': forma}) 
+    return render(request, 'forma.html', {'forma': forma})
