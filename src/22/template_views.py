@@ -1,7 +1,7 @@
 from .models import Alumno
 from .forms import FormaAlumno
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from requests import post
 from django.contrib.auth.decorators  import login_required 
 
@@ -11,13 +11,13 @@ campos = ('numero_de_cuenta', 'nombre', 'primer_apellido', 'segundo_apellido', '
 @login_required
 def vista(request):
     lista = [[(campo, getattr(alumno, campo)) for campo in campos] for alumno in Alumno.objects.all()]
-    return render_to_response('listado.html',{'lista': lista}) 
+    return render(request, 'listado.html',{'lista': lista}) 
 
 
 @login_required
 def valida(request):
     lista = [[getattr(alumno, campo) for campo in campos] for alumno in Alumno.objects.all()]
-    return render_to_response('valida.html',{'lista': lista}) 
+    return render(request,'valida.html',{'lista': lista}) 
 
 
 @login_required
@@ -42,4 +42,4 @@ def forma(request):
     else:
         forma = FormaAlumno()
 
-    return render(request, 'forma.html', {'forma': forma}) 
+    return render(request, 'forma.html', {'forma': forma})

@@ -18,6 +18,11 @@ def numero(request, numero):
     return HttpResponse('<h1>Introdujiste el número: {}</h1>'.format(str(numero)))
 
 
+def saluda(request, nombre):
+    contexto = {"titulo":"Prueba de plantilla", "nombre": nombre}
+    return render(request, 'ejemplo.html', contexto)
+
+
 def respuesta_json(request):
     return JsonResponse({'tipo contenido':request.content_type, 'metodo':request.method, 'ruta':request.path})
 
