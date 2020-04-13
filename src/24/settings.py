@@ -64,7 +64,7 @@ WSGI_APPLICATION = 'tutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {'default': {'ENGINE': 'mysql.connector.django',
+DATABASES = {'default': {'ENGINE': 'django.db.backends.mysql',
                            'NAME': 'db_django',
                            'USER': 'root',
                            'PASSWORD': '0p3n5t4ck',
